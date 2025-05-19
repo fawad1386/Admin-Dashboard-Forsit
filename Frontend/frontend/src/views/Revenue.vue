@@ -11,8 +11,22 @@
       </div>
     </div>
 
+    <div class="mb-4">
+      <label for="year" class="block mb-1 font-medium">Select Year:</label>
+      <select
+        id="year"
+        v-model="selectedYear"
+        @change="fetchAnalytics"
+        class="border border-gray-300 p-2 rounded w-48"
+      >
+        <option v-for="year in yearOptions" :key="year" :value="year">
+          {{ year }}
+        </option>
+      </select>
+    </div>
+
     <div class="bg-white p-4 shadow rounded" v-if="chartData.datasets && chartData.datasets.length">
-      <h2 class="text-lg font-semibold mb-4">Revenue Trends</h2>
+      <h2 class="text-lg font-semibold mb-4">Revenue Trends ({{ selectedYear }})</h2>
       <LineChart :chart-data="chartData" />
     </div>
     <div v-else class="text-center text-gray-500">No revenue chart data available.</div>
@@ -27,9 +41,14 @@ import LineChart from '@/components/LineChart.vue'
 const summary = ref({ totalOrders: 0, totalRevenue: 0 })
 const chartData = ref({ labels: [], datasets: [] })
 
-onMounted(async () => {
+const selectedYear = ref(new Date().getFullYear())
+const yearOptions = ref([2022, 2023, 2024, 2025]) // Add/remove based on your data
+
+const fetchAnalytics = async () => {
   try {
-    const res = await axios.get('http://localhost:5000/api/analytics')
+    const res = await axios.get('http://localhost:5000/api/analytics', {
+      params: { year: selectedYear.value }
+    })
 
     summary.value.totalOrders = res.data.totalOrders
     summary.value.totalRevenue = res.data.totalRevenue
@@ -37,5 +56,7 @@ onMounted(async () => {
   } catch (error) {
     console.error('Error loading analytics:', error)
   }
-})
+}
+
+onMounted(fetchAnalytics)
 </script>

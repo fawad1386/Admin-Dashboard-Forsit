@@ -1,8 +1,29 @@
 <script setup>
 import { ref, watch, onMounted, onBeforeUnmount } from 'vue'
-import { Chart, LineController, LineElement, PointElement, LinearScale, Title, CategoryScale } from 'chart.js'
+import {
+  Chart,
+  LineController,
+  LineElement,
+  PointElement,
+  LinearScale,
+  Title,
+  CategoryScale,
+  Tooltip,
+  Legend,
+} from 'chart.js'
+import ChartDataLabels from 'chartjs-plugin-datalabels'
 
-Chart.register(LineController, LineElement, PointElement, LinearScale, Title, CategoryScale)
+Chart.register(
+  LineController,
+  LineElement,
+  PointElement,
+  LinearScale,
+  Title,
+  CategoryScale,
+  Tooltip,
+  Legend,
+  ChartDataLabels
+)
 
 const props = defineProps({
   chartData: Object
@@ -29,7 +50,44 @@ function createChart(data) {
       maintainAspectRatio: false,
       plugins: {
         legend: { display: true, position: 'top' },
-        title: { display: true, text: 'Revenue Over Time' }
+        title: { display: true, text: 'Revenue Over Time' },
+        datalabels: {
+          display: true,
+          color: '#000',
+          align: 'top',
+          font: {
+            weight: 'bold',
+          },
+          formatter: (value) => `$${value}`,
+        },
+        tooltip: {
+          callbacks: {
+            label: (context) => `$${context.parsed.y}`
+          }
+        }
+      },
+      scales: {
+        x: {
+          title: {
+            display: true,
+            text: 'Months',
+            font: {
+              size: 14,
+              weight: 'bold',
+            }
+          }
+        },
+        y: {
+          beginAtZero: true,
+          title: {
+            display: true,
+            text: 'Revenue ($)',
+            font: {
+              size: 14,
+              weight: 'bold',
+            }
+          }
+        }
       }
     }
   })
@@ -60,5 +118,5 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <canvas ref="chartRef" style="width: 100%; max-height: 300px;"></canvas>
+  <canvas ref="chartRef" style="width: 100%; max-height: 400px;"></canvas>
 </template>
