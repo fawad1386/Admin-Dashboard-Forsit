@@ -5,14 +5,17 @@ const Product = require("../models/Product");
 // GET all products
 router.get('/', async (req, res) => {
   try {
-    const { search, sort } = req.query;
+    const { search, sort, category } = req.query;
 
     let query = {};
     if (search) {
       query.name = { $regex: search, $options: 'i' }; // Case-insensitive search
     }
 
-    // Define sorting logic
+    if (category) {
+      query.category = category; // Exact match for category
+    }
+
     let sortOption = {};
     if (sort === 'price') {
       sortOption.price = 1; // ascending
@@ -65,6 +68,16 @@ router.delete('/:id', async (req, res) => {
     res.status(500).json({ error: 'Failed to delete product' });
   }
 });
+
+router.get('/categories', async (req, res) => {
+  try {
+    const categories = await Product.distinct('category')
+    res.status(200).json(categories)
+  } catch (err) {
+    res.status(500).json({ message: err.message })
+  }
+})
+
 
 
 module.exports = router;

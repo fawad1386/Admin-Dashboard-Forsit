@@ -14,6 +14,11 @@
         <option value="price">Price</option>
         <option value="stock">Stock</option>
       </select>
+      <select v-model="categoryFilter" @change="fetchProducts" class="border p-2 rounded">
+        <option value="">All Categories</option>
+        <option v-for="cat in categories" :key="cat" :value="cat">{{ cat }}</option>
+      </select>
+
     </div>
 
     <!-- Products Table -->
@@ -31,7 +36,7 @@
       <tbody>
         <tr v-for="product in products" :key="product._id">
           <td class="p-2">
-            <img :src="getImageUrl(product.image)" alt="" class="w-10 h-10 object-cover" />
+            <img :src="product.imageUrl" alt="" class="w-10 h-10 object-cover" />
           </td>
           <td class="p-2">{{ product.name }}</td>
 
@@ -104,6 +109,8 @@ const products = ref([])
 const searchTerm = ref('')
 const sortOption = ref('')
 const editingProduct = ref(null)
+const categoryFilter = ref('')
+const categories = ref([])
 
 const fetchProducts = async () => {
   try {
@@ -111,11 +118,21 @@ const fetchProducts = async () => {
       params: {
         search: searchTerm.value,
         sort: sortOption.value,
+        category: categoryFilter.value,
       },
     })
     products.value = data
   } catch (err) {
     console.error('Error fetching products:', err)
+  }
+}
+
+const fetchCategories = async () => {
+  try {
+    const { data } = await axios.get('http://localhost:5000/api/products/categories')
+    categories.value = data
+  } catch (err) {
+    console.error('Error fetching categories:', err)
   }
 }
 
@@ -154,5 +171,8 @@ const deleteProduct = async (id) => {
   }
 }
 
-onMounted(fetchProducts)
+onMounted(() => {
+  fetchCategories()
+  fetchProducts()
+})
 </script>
