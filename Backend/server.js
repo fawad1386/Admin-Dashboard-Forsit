@@ -8,9 +8,14 @@ app.use(cors());
 app.use(express.json());
 app.use('/uploads', express.static('uploads'));
 
-// ✅ Add this line to include your product routes
 const productRoutes = require('./routes/products');
 app.use('/api/products', productRoutes);
+
+const analyticsRoutes = require('./routes/analytics');
+app.use('/api/analytics', analyticsRoutes);
+
+const orderRoutes = require('./routes/orders');
+app.use('/api/orders', orderRoutes);
 
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
