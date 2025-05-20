@@ -2,7 +2,9 @@
 
 A full-featured Admin Dashboard built using **Vue 3** and **Tailwind CSS** for the frontend, with a **Node.js** and **MongoDB** backend. This dashboard provides real-time metrics on orders, revenue, and products, featuring a persistent sidebar navigation and dark mode support.
 
-![Admin Dashboard Preview](https://via.placeholder.com/800x400?text=Admin+Dashboard+Preview)
+![Admin Dashboard Preview] 
+<img width="1677" alt="Screenshot 2025-05-20 at 6 23 15 PM" src="https://github.com/user-attachments/assets/df78e46e-6324-4235-8d39-980d2b04a02f" />
+
 
 ## Features
 
@@ -17,7 +19,7 @@ A full-featured Admin Dashboard built using **Vue 3** and **Tailwind CSS** for t
 
 ## Demo
 
-[View Live Demo](#) *(Add your live demo link when available)*
+[View Live Demo](https://admin-dashboard-fawad.netlify.app/)
 
 ## Technologies Used
 
@@ -60,7 +62,7 @@ A full-featured Admin Dashboard built using **Vue 3** and **Tailwind CSS** for t
 
 3. Create a `.env` file in the frontend folder:
    ```env
-   VITE_API_BASE_URL=http://localhost:5000/api
+   VITE_API_BASE_URL=http://localhost:10000/api
    ```
 
 4. Start the development server:
@@ -89,7 +91,7 @@ A full-featured Admin Dashboard built using **Vue 3** and **Tailwind CSS** for t
 3. Create a `.env` file:
    ```env
    MONGODB_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/admin-dashboard
-   PORT=5000
+   PORT=10000
    ```
 
 4. Start the backend server:
@@ -99,7 +101,7 @@ A full-featured Admin Dashboard built using **Vue 3** and **Tailwind CSS** for t
    yarn start
    ```
 
-The backend server will run on `http://localhost:5000`
+The backend server will run on `http://localhost:10000`
 
 ## Running the Project
 
