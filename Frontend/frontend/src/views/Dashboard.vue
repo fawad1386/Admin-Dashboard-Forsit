@@ -38,7 +38,7 @@
               <ul class="text-sm text-gray-700 dark:text-gray-400 space-y-1">
                 <li><strong>Email:</strong> <a href="mailto:mohammad.fawad.564@gmail.com" class="text-blue-500 hover:underline">mohammad.fawad.564@gmail.com</a></li>
                 <li><strong>Phone:</strong> +92 348 0808794</li>
-                <li><strong>GitHub:</strong> <a href="https://github.com/fawad1386" target="_blank" class="text-blue-500 hover:underline">github.com/mfawad564</a></li>
+                <li><strong>GitHub:</strong> <a href="https://github.com/fawad1386" target="_blank" class="text-blue-500 hover:underline">github.com/fawad1386</a></li>
                 <li><strong>Portfolio:</strong> <a href="https://fawadnaeem.netlify.app/" target="_blank" class="text-blue-500 hover:underline">fawadnaeem.netlify.app</a></li>
               </ul>
             </div>
