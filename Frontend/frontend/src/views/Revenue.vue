@@ -46,7 +46,7 @@ const yearOptions = ref([2022, 2023, 2024, 2025])
 
 const fetchAnalytics = async () => {
   try {
-    const res = await axios.get('http://localhost:10000/api/analytics', {
+    const res = await axios.get('https://admin-dashboard-forsit.onrender.com/api/analytics', {
       params: { year: selectedYear.value }
     })
 

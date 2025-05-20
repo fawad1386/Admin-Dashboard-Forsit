@@ -109,7 +109,7 @@ const categories = ref([])
 
 const fetchProducts = async () => {
   try {
-    const { data } = await axios.get('http://localhost:10000/api/products', {
+    const { data } = await axios.get('https://admin-dashboard-forsit.onrender.com/api/products', {
       params: {
         search: searchTerm.value,
         sort: sortOption.value,
@@ -124,7 +124,7 @@ const fetchProducts = async () => {
 
 const fetchCategories = async () => {
   try {
-    const { data } = await axios.get('http://localhost:10000/api/products/categories')
+    const { data } = await axios.get('https://admin-dashboard-forsit.onrender.com/api/products/categories')
     categories.value = data
   } catch (err) {
     console.error('Error fetching categories:', err)
@@ -144,7 +144,7 @@ const cancelEdit = () => {
 const saveUpdate = async (id) => {
   try {
     const { price, stock } = editingProduct.value
-    await axios.put(`http://localhost:10000/api/products/${id}`, {
+    await axios.put(`https://admin-dashboard-forsit.onrender.com/api/products/${id}`, {
       price,
       stock,
     })
@@ -159,7 +159,7 @@ const deleteProduct = async (id) => {
   if (!confirm('Are you sure you want to delete this product?')) return
 
   try {
-    await axios.delete(`http://localhost:10000/api/products/${id}`)
+    await axios.delete(`https://admin-dashboard-forsit.onrender.com/api/products/${id}`)
     await fetchProducts()
   } catch (err) {
     console.error('Delete failed:', err)
