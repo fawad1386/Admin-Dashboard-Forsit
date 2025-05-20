@@ -23,7 +23,7 @@
           <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow hover:shadow-lg transition">
             <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-2">🛠️ Project Overview</h3>
             <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
-              This is a full-featured Admin Dashboard built using <strong>Vue 3</strong> and <strong>Tailwind CSS</strong> with a <strong>Node.js</strong> and <strong>MongoDB</strong> backend.
+              This is a full-featured Admin Dashboard built using <strong>Vue 3</strong> and <strong>Tailwind CSS</strong> with a <strong>Node.js</strong> and <strong>MongoDB</strong> backend.This dashboard provides real-time metrics on orders, revenue, and products, featuring a persistent sidebar navigation and dark mode support.
             </p>
           </div>
           <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col sm:flex-row items-center sm:items-start gap-6">
