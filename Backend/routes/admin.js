@@ -4,7 +4,6 @@ const router = express.Router();
 const Order = require('../models/Order');
 const Product = require('../models/Product');
 
-// GET /api/admin/dashboard-stats
 router.get('/', async (req, res) => {
   try {
     const totalOrders = await Order.countDocuments();

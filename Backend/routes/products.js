@@ -2,25 +2,24 @@ const express = require("express");
 const router = express.Router();
 const Product = require("../models/Product");
 
-// GET all products
 router.get('/', async (req, res) => {
   try {
     const { search, sort, category } = req.query;
 
     let query = {};
     if (search) {
-      query.name = { $regex: search, $options: 'i' }; // Case-insensitive search
+      query.name = { $regex: search, $options: 'i' }; 
     }
 
     if (category) {
-      query.category = category; // Exact match for category
+      query.category = category;
     }
 
     let sortOption = {};
     if (sort === 'price') {
-      sortOption.price = 1; // ascending
+      sortOption.price = 1; 
     } else if (sort === '-price') {
-      sortOption.price = -1; // descending
+      sortOption.price = -1; 
     } else if (sort === 'stock') {
       sortOption.stock = 1;
     } else if (sort === '-stock') {
@@ -34,7 +33,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-// POST a new product
 router.post("/", async (req, res) => {
   const product = new Product(req.body);
   await product.save();
@@ -77,7 +75,5 @@ router.get('/categories', async (req, res) => {
     res.status(500).json({ message: err.message })
   }
 })
-
-
 
 module.exports = router;

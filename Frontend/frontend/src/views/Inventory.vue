@@ -1,6 +1,5 @@
 <template>
   <div class="p-4">
-    <!-- Search and Sort Controls -->
     <div class="mb-4 flex flex-wrap gap-4 items-center">
       <input
         type="text"
@@ -21,7 +20,6 @@
 
     </div>
 
-    <!-- Products Table -->
     <table class="w-full border text-left">
       <thead>
         <tr class="bg-gray-100">
@@ -40,7 +38,6 @@
           </td>
           <td class="p-2">{{ product.name }}</td>
 
-          <!-- Editable fields -->
           <td class="p-2">
             <div v-if="editingProduct?._id === product._id">
               <input v-model="editingProduct.price" type="number" class="border p-1 rounded w-20" />
@@ -59,13 +56,11 @@
             </div>
           </td>
 
-          <!-- Low Stock Alert -->
           <td class="p-2">
             <span v-if="product.stock < 5" class="text-red-600 font-semibold">Low Stock</span>
             <span v-else class="text-green-600">OK</span>
           </td>
 
-          <!-- Action Buttons -->
           <td class="p-2 flex gap-2">
             <button
               v-if="editingProduct?._id === product._id"

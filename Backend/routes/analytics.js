@@ -1,12 +1,10 @@
-// routes/analytics.js (or wherever your analytics route is)
-
 const express = require('express');
 const router = express.Router();
 const Order = require('../models/Order');
 
 router.get('/', async (req, res) => {
   try {
-    const year = parseInt(req.query.year); // e.g. 2024
+    const year = parseInt(req.query.year);
     let matchStage = {};
 
     if (!isNaN(year)) {
@@ -20,11 +18,10 @@ router.get('/', async (req, res) => {
     const totalOrders = orders.length;
     const totalRevenue = orders.reduce((sum, order) => sum + order.totalAmount, 0);
 
-    // Group revenue by month
-    const monthlyRevenue = Array(12).fill(0); // index 0 = Jan
+    const monthlyRevenue = Array(12).fill(0); 
 
     orders.forEach(order => {
-      const month = new Date(order.orderDate).getMonth(); // 0 - 11
+      const month = new Date(order.orderDate).getMonth(); 
       monthlyRevenue[month] += order.totalAmount;
     });
 

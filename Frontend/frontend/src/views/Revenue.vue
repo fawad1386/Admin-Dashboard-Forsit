@@ -42,7 +42,7 @@ const summary = ref({ totalOrders: 0, totalRevenue: 0 })
 const chartData = ref({ labels: [], datasets: [] })
 
 const selectedYear = ref(new Date().getFullYear())
-const yearOptions = ref([2022, 2023, 2024, 2025]) // Add/remove based on your data
+const yearOptions = ref([2022, 2023, 2024, 2025])
 
 const fetchAnalytics = async () => {
   try {
