@@ -1,11 +1,11 @@
 <template>
-  <div class="p-6">
+  <div class="p-6 dark:bg-gray-900 dark:text-white min-h-screen">
     <div class="grid grid-cols-2 gap-6 mb-6">
-      <div class="bg-white shadow rounded p-4">
+      <div class="bg-white dark:bg-gray-800 shadow rounded p-4">
         <h2 class="text-xl font-semibold">Total Orders</h2>
         <p class="text-3xl mt-2">{{ summary.totalOrders }}</p>
       </div>
-      <div class="bg-white shadow rounded p-4">
+      <div class="bg-white dark:bg-gray-800 shadow rounded p-4">
         <h2 class="text-xl font-semibold">Total Revenue</h2>
         <p class="text-3xl mt-2">${{ summary.totalRevenue }}</p>
       </div>
@@ -17,7 +17,7 @@
         id="year"
         v-model="selectedYear"
         @change="fetchAnalytics"
-        class="border border-gray-300 p-2 rounded w-48"
+        class="border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-white p-2 rounded w-48"
       >
         <option v-for="year in yearOptions" :key="year" :value="year">
           {{ year }}
@@ -25,13 +25,19 @@
       </select>
     </div>
 
-    <div class="bg-white p-4 shadow rounded" v-if="chartData.datasets && chartData.datasets.length">
+    <div
+      class="bg-white dark:bg-gray-800 p-4 shadow rounded"
+      v-if="chartData.datasets && chartData.datasets.length"
+    >
       <h2 class="text-lg font-semibold mb-4">Revenue Trends ({{ selectedYear }})</h2>
       <LineChart :chart-data="chartData" />
     </div>
-    <div v-else class="text-center text-gray-500">No revenue chart data available.</div>
+    <div v-else class="text-center text-gray-500 dark:text-gray-400">
+      No revenue chart data available.
+    </div>
   </div>
 </template>
+
 
 <script setup>
 import { ref, onMounted } from 'vue'

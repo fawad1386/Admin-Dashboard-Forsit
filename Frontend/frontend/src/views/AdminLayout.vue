@@ -48,7 +48,7 @@
         <h2 class="text-lg sm:text-xl font-semibold">Dashboard</h2>
         <div class="flex items-center gap-3">
           <span class="hidden sm:block">Welcome, <strong>Fawad</strong></span>
-          <img src="https://i.pravatar.cc/40" alt="User avatar" class="w-10 h-10 rounded-full" />
+          <img src="../assets/IMG_9371.JPG" alt="User avatar" class="w-10 h-10 rounded-full" />
         </div>
       </header>
       <main class="flex-1 overflow-y-auto p-4 sm:p-6">
