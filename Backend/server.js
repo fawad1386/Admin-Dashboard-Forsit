@@ -17,6 +17,9 @@ app.use('/api/analytics', analyticsRoutes);
 const orderRoutes = require('./routes/orders');
 app.use('/api/orders', orderRoutes);
 
+const adminCounts = require('./routes/admin');
+app.use('/api/admin', adminCounts);
+
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
