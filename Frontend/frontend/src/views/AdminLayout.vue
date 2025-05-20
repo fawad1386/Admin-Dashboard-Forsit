@@ -82,7 +82,7 @@ function toggleDarkMode() {
 
 async function fetchDashboardData() {
   try {
-    const res = await fetch('http://localhost:5000/api/admin')
+    const res = await fetch('http://localhost:10000/api/admin')
     if (!res.ok) throw new Error('Failed to fetch dashboard data')
     const data = await res.json()
     totalOrders.value = data.totalOrders

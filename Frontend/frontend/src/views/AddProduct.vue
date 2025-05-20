@@ -46,7 +46,7 @@ const product = ref({
 
 const fetchCategories = async () => {
   try {
-    const { data } = await axios.get("http://localhost:5000/api/products/categories")
+    const { data } = await axios.get("http://localhost:10000/api/products/categories")
     categories.value = data
   } catch (err) {
     console.error("Failed to fetch categories:", err)
@@ -61,7 +61,7 @@ const addProduct = async () => {
   }
 
   try {
-    await axios.post("http://localhost:5000/api/products", payload)
+    await axios.post("http://localhost:10000/api/products", payload)
     alert("Product added!")
     product.value = { name: "", description: "", price: 0, stock: 0, imageUrl: "", category: "" }
     newCategory.value = ""
