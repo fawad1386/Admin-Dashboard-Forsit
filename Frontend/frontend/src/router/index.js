@@ -1,30 +1,24 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import AdminLayout from '../views/AdminLayout.vue'
+import Dashboard from '../views/Dashboard.vue'
+import AddProduct from '../views/AddProduct.vue'
+import Inventory from '../views/Inventory.vue'
+import Revenue from '../views/Revenue.vue'
 
-const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [
-    {
-      path: '/add-product',
-      name: 'add-product',
-      component: () => import('../views/AddProduct.vue'),
-    },
-    {
-      path: '/inventory',
-      name: 'inventory',
-      component: () => import('../views/Inventory.vue'),
-    },
-    {
-      path: '/revenue',
-      name: 'revenue',
-      component: () => import('../views/Revenue.vue'),
-    },
-    {
-      path: '/',
-      name: 'dashboard',
-      component: () => import('../views/Dashboard.vue'),
-    },
-  ],
+const routes = [
+  {
+    path: '/',
+    component: AdminLayout,
+    children: [
+      { path: '', component: Dashboard },
+      { path: 'add-product', component: AddProduct },
+      { path: 'inventory', component: Inventory },
+      { path: 'revenue', component: Revenue },
+    ]
+  }
+]
+
+export default createRouter({
+  history: createWebHistory(),
+  routes
 })
-
-export default router

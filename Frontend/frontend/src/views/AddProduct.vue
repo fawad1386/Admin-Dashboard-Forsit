@@ -1,4 +1,5 @@
 <template>
+    <div class="flex items-center justify-center">
   <div class="p-6 max-w-md mx-auto">
     <h1 class="text-2xl font-bold mb-4">Add Product</h1>
     <form @submit.prevent="addProduct">
@@ -8,14 +9,12 @@
       <input v-model.number="product.stock" type="number" placeholder="Initial Stock" class="mb-2 p-2 border w-full" />
       <input v-model="product.imageUrl" placeholder="Image URL" class="mb-2 p-2 border w-full" />
 
-      <!-- Category Selector -->
       <select v-model="product.category" class="mb-2 p-2 border w-full">
         <option value="">Select Category</option>
         <option v-for="cat in categories" :key="cat" :value="cat">{{ cat }}</option>
         <option value="__new">+ Add New Category</option>
       </select>
 
-      <!-- Optional New Category Input -->
       <input
         v-if="product.category === '__new'"
         v-model="newCategory"
@@ -25,6 +24,7 @@
 
       <button class="bg-green-500 text-white px-4 py-2 rounded">Add Product</button>
     </form>
+  </div>
   </div>
 </template>
 

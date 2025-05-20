@@ -1,1 +1,7 @@
 @import "tailwindcss";
+.fa-home, .fa-plus-square, .fa-warehouse, .fa-chart-line{
+    margin-right: 7px;
+}
+.info-cards{
+    margin-top:30px;
+}
